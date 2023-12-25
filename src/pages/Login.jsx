@@ -4,6 +4,7 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import GoogleLogin from "../components/GoogleLogin";
+import Cookies from "js-cookie";
 
 function Login() {
   // const navigate = useNavigate();
@@ -34,8 +35,8 @@ function Login() {
       const response = await axios.request(config);
       console.log((response))
       const { token } = response.data.data;
-
-      localStorage.setItem("token", token);
+      Cookies.set("token", token, { httpOnly: true });
+      // localStorage.setItem("token", token);
 
       // navigate("/");
 
